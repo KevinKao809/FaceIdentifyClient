@@ -2,21 +2,28 @@
 import requests
     
 class FaceWebAPI:
-    FaceIdentifyByImageURL = 'https://aifaceweb.azurewebsites.net/personGroups/{personGroupId}/identifyImageURL'
-    FaceIdentifyByImageObject = 'https://aifaceweb.azurewebsites.net/personGroups/{personGroupId}/identifyImageObject'    
-    PersonGroupId = '5f6a671b-781a-4257-ad37-6d2ef4aa20c0'
+    FaceIdentifyByImageURL = 'http://127.0.0.1:5000/personGroups/{personGroupId}/identifyImageURL'
+    FaceIdentifyByImageObject = 'http://127.0.0.1:5000/personGroups/{personGroupId}/identifyImageObject'    
+    PersonGroupId = 'd663ba15-85f8-49e0-b30b-cafcfc35a909'
+    APIKey = 'WebAPIKey-20181111'
     
     def __init__(self):
         self.FaceIdentifyByImageURL = FaceWebAPI.FaceIdentifyByImageURL.replace("{personGroupId}", FaceWebAPI.PersonGroupId)
-        self.FaceIdentifyByImageObject = FaceWebAPI.FaceIdentifyByImageObject.replace("{personGroupId}", FaceWebAPI.PersonGroupId)
+        self.FaceIdentifyByImageObject = FaceWebAPI.FaceIdentifyByImageObject.replace("{personGroupId}", FaceWebAPI.PersonGroupId)        
     
     def identifyByImageObject(self, frame):
         try:
-            files = {'photo.jpg': frame}
-            matchResult = requests.post(self.FaceIdentifyByImageObject, files = files)
-            resultObj = matchResult.json()   
-            name = resultObj['name']
-            return name  
+            files = {'FacePhoto': frame}  
+            postData = {'apiKey': FaceWebAPI.APIKey}  
+            matchResult = requests.post(self.FaceIdentifyByImageObject, data=postData, files = files)
+            if matchResult.status_code == 401:
+                return 'APIKey Fail'
+            elif matchResult.status_code == 200:
+                resultObj = matchResult.json()   
+                name = resultObj['name']
+                return name
+            else:
+                return '...'  
         except requests.HTTPError as e:
             return e
         except Exception as e:
@@ -24,7 +31,7 @@ class FaceWebAPI:
             return '...'
     
     def identifyByImageURL(self, imageURL):
-        postData = '{"url":"' + imageURL + '"}'        
+        postData = '{"url":"' + imageURL + '", "apiKey":"' + FaceWebAPI.APIKey + '"}'        
         try:
             matchResult = requests.post(self.FaceIdentifyByImageURL, json=postData)
             resultObj = matchResult.json()   
