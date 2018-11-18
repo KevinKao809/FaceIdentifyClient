@@ -2,10 +2,10 @@
 import requests
     
 class FaceWebAPI:
-    FaceIdentifyByImageURL = 'http://127.0.0.1:5000/personGroups/{personGroupId}/identifyImageURL'
-    FaceIdentifyByImageObject = 'http://127.0.0.1:5000/personGroups/{personGroupId}/identifyImageObject'    
+    FaceIdentifyByImageURL = 'https://127.0.0.1/personGroups/{personGroupId}/identifyImageURL'
+    FaceIdentifyByImageObject = 'https://127.0.0.1/personGroups/{personGroupId}/identifyImageObject'    
     PersonGroupId = 'd663ba15-85f8-49e0-b30b-cafcfc35a909'
-    APIKey = 'WebAPIKey-20181111'
+    APIKey = 'WebAPIKey'
     
     def __init__(self):
         self.FaceIdentifyByImageURL = FaceWebAPI.FaceIdentifyByImageURL.replace("{personGroupId}", FaceWebAPI.PersonGroupId)
