@@ -41,6 +41,8 @@ There are 4 different response type return by above APIs:
 ### 1. Response (face identified) / Http Status: 200 OK
 
     {
+        "code": 0,
+        "confidence":0.8566,
         "personId":"36293b6c-9c70-4fda-b75b-dce72be2a072",
         "persistedFaceIds":[
             "36638015-63ae-42db-b8ba-63981ca89f63",
@@ -53,9 +55,15 @@ There are 4 different response type return by above APIs:
 ### 2. Response (face not match) / Http Status: 200 OK
 
     {
-        "name": "unknow"
+        "code": 1
     }
 
-### 3. Response (API Key Fail) / Http Stauts : 401 Unauthorized
+### 3. Response (Not a face image) / Http Status: 200 OK
 
-### 4. Response (personGroups ID fail) / Http Status : 400 Bad Request
+    {
+        "code": 2
+    }
+
+### 4. Response (API Key Fail) / Http Stauts : 401 Unauthorized
+
+### 5. Response (personGroups ID fail) / Http Status : 400 Bad Request
