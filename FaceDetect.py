@@ -36,6 +36,7 @@ def timeDiff(time1,time2):
 # Create Video Capture
 #
 vCapture = cv2.VideoCapture(cameraId)
+#vCapture = cv2.VideoCapture("rtsp://admin:@ 125.227.202.189:554/live1.sdp")
 
 #
 # Main Loop to capture Video Frame till user press 'q'

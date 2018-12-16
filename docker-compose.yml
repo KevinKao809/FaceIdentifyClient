@@ -1,0 +1,14 @@
+version: '3.0'
+services:
+  face-client:
+    image: cheeyuankao.azurecr.io/faceclient:1.2
+    restart: always    
+    environment:
+    - FACE_IP_CAM_URL=rtsp://admin:@125.227.202.189:5540/live1.sdp
+    - FACE_PERSON_GROUP_ID=ed2dbde7-8160-423e-82d7-a93eb1c7ffd7
+    - FACE_COMM_ID=Room-A
+    - FACE_CAMERA_ID=Room-A-Cam-001
+    - FACE_MIN_WIDTH=60
+    - FACE_MIN_HEIGHT=60
+    - FACE_DETECT_RECALL=Low
+    - FACE_IMAGE_PUSH_URL=http://face1119.micro-second.net/personGroups/{personGroupId}/pushIdentifyImageObject
