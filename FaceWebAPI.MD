@@ -385,9 +385,9 @@ Encode: multipart/form-data
 
 Request Body:
 
-    | Field Name |   Type   |     Value         |
-    |------------|:--------:|------------------:|
-    | FacePhoto  |  File    | Image File Object |
+| Field Name |   Type   |     Value         |
+|------------|:--------:|------------------:|
+| FacePhoto  |  File    | Image File Object |
 
 Response Body:
 
@@ -435,10 +435,10 @@ Encode: form-data
 
 Request Body:
 
-    | Field Name |   Type   |     Value         |
-    |------------|:--------:|------------------:|
-    | username   |  text    | {login ID}        |
-    | password   |  text    | {password}        |
+| Field Name |   Type   |     Value         |
+|------------|:--------:|------------------:|
+| username   |  text    | {login ID}        |
+| password   |  text    | {password}        |
 
 Response Body:
 
